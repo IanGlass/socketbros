@@ -48,6 +48,7 @@
 
     function sendMessage() {
       $.post('/messages', { name: $("#name").val(), message: $("#message").val() })
+      $("#message").val('');
     }
   </script>
 </body>

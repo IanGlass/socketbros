@@ -23,13 +23,11 @@ app.get('/messages', (req, res) => {
 })
 
 app.post('/messages', (req, res) => {
-  console.log('post');
   messages.push({
     name: req.body.name,
     message: req.body.message
   });
   io.emit('message', req.body);
-  console.log(messages);
   res.status(200).send(messages);
 })
 
