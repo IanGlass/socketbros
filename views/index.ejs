@@ -28,6 +28,7 @@
       getMessages()
 
       var socket = io();
+      // Register to the messasge socket channel
       socket.on('message', addMessages);
 
       $("#send").click(sendMessage);

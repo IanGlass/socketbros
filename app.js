@@ -1,7 +1,10 @@
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
 var app = express();
 var http = require('http').Server(app);
+
+// Create socket obj and add to server
 var io = require('socket.io')(http);
 
 app.use(express.static(__dirname));
@@ -27,6 +30,7 @@ app.post('/messages', (req, res) => {
     name: req.body.name,
     message: req.body.message
   });
+  // Update everyone
   io.emit('message', req.body);
   res.status(200).send(messages);
 })
